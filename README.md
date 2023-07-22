@@ -1,3 +1,11 @@
 # etm-node
-This is my second attempt to create "Educatie Team Manager" (ETM). The first was made using Perl, but I got stuck on creating an adaptive card. This second attempt is done by using NodeJS.
+## Inleiding
+Dit is mijn 2e poging voor deze app. De eerste poging, een Perl versie, liep vast op het maken van een adaptive card. Ik kreeg niet de JSON structuur voor elkaar om deze te maken. Deze 2e versie is NodeJS gebasseerd.
+## Doel
+ETM is een app bedoelt om het leven voor docenten, die verschillende MS edu teams moeten inrichten/beheren, wat gemakkelijker te maken. Geplande functionaliteit:
+
+-Gelijktijdig chat berichten sturen naar verschillende teams
+-Vanuit 1 bron team content plaatsen in verschillende teams. Momenteel geplanned:
+--Bestanden
+--Opdrachten
 
