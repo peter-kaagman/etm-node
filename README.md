@@ -6,6 +6,6 @@ ETM is een app bedoelt om het leven voor docenten, die verschillende MS edu team
 
 - Gelijktijdig chat berichten sturen naar verschillende teams
 - Vanuit 1 bron team content plaatsen in verschillende teams. Momenteel geplanned:
-- - Bestanden
-- - Opdrachten
+   - Bestanden
+   - Opdrachten
 
