@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    #list_header.pagepart
+    #team_list.pagepart
+        h2 Team waar je lid van bent.
+        #teamList
+            h3 De lijst wordt momenteel geladen
+    #send_message.pagepart
+        form#sendMessage(action="")
+            input(type="text", name="message")
+            input(type="submit", value="Stuur") 
+    #team_renew.pagepart 
+        input#reloadTeams(type="button", value="Teams laden")
+    <script src="/javascripts/teams.js"></script>

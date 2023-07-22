@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    table 
+        each val, key in idTokenClaims 
+            tr  
+                td #{key} 
+                td #{val}
+    br
+    a(href='https://aka.ms/id-token' target='blank') Leer over de claims in dit token.

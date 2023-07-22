@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title=title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    #page
+      #header.pagepart.flex-container
+        #banner.flex-child
+          h1.title #{title} 
+        #login.flex-child
+          if isAuthenticated 
+            p Hi #{name} 
+            br 
+            a(href='/auth/signout') log uit
+          else
+            a(href='/auth/signin') sign in
+      if  isAuthenticated
+        #navigate.pagepart
+          ul 
+            li.h_menu 
+              a.navigatie(href='/') Home
+            li.h_menu 
+              a.navigate(href='/users/profile') Profiel
+            li.h_menu 
+              a.navigate(href='/users/id') ID Token Claims
+            li.h_menu 
+              a.navigate(href='/teams') Teams
+    block content
