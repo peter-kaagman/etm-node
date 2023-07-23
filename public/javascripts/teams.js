@@ -56,6 +56,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
       fetch('/api/reloadteams')
       .then((response) => { //{{{2
         // Do something with the response
+        console.log("Dit is de  resonse.json:");
         console.log(response);
         return response.json();
       }) //}}}

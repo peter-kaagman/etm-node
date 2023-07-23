@@ -30,6 +30,7 @@ var app = express();
     cookie: {
         httpOnly: true,
         secure: false, // set this to true on production
+        maxAge: 60 * 60 * 1000, // 1 hour
     }
 }));
 
