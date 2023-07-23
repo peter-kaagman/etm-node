@@ -5,8 +5,8 @@ const apiController = require('../controllers/apiController');
 const router = express.Router();
 
 // custom middleware to check auth state
-function isAuthenticated(req, res, next) {
-    if (!req.session.isAuthenticated) {
+function isAuthorized(req, res, next) {
+    if (!req.session.isAuthorized) {
         return res.redirect('/auth/signin'); // redirect to sign-in route
     }
 
@@ -15,7 +15,7 @@ function isAuthenticated(req, res, next) {
 
 
 
-router.get('/reloadteams', isAuthenticated, apiController.reloadTeams); 
+router.get('/reloadteams', isAuthorized, apiController.reloadTeams); 
 
 
 module.exports = router;

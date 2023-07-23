@@ -11,16 +11,16 @@ const userController = require("../controllers/userController");
 
 
 // custom middleware to check auth state
-function isAuthenticated(req, res, next) {
-    if (!req.session.isAuthenticated) {
+function isAuthorized(req, res, next) {
+    if (!req.session.isAuthorized) {
         return res.redirect('/auth/signin'); // redirect to sign-in route
     }
 
     next();
 };
 
-router.get('/id', isAuthenticated, userController.id);
+router.get('/id', isAuthorized, userController.id);
 
-router.get('/profile', isAuthenticated, userController.profile);
+router.get('/profile', isAuthorized, userController.profile);
 
 module.exports = router;

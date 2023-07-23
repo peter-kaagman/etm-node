@@ -145,6 +145,7 @@ class AuthProvider {
                 req.session.idToken = tokenResponse.idToken;
                 req.session.account = tokenResponse.account;
                 req.session.isAuthenticated = true;
+                req.session.isAuthorized = this.getAuthorized(tokenResponse.account.idTokenClaims.roles);
 
                 const state = JSON.parse(this.cryptoProvider.base64Decode(req.body.state));
                 res.redirect(state.successRedirect);
@@ -153,7 +154,10 @@ class AuthProvider {
             }
         }
     }
-
+    getAuthorized(roles){
+        return ( roles.includes('etm') && roles.includes('Medewerkers') );
+      }
+  
     logout(options = {}) {
         return (req, res, next) => {
 

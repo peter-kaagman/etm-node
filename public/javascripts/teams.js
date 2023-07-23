@@ -100,8 +100,8 @@ document.addEventListener( 'DOMContentLoaded', function() {
           row.append(cellNaam);
           // Rol
           const cellRol = aCell.cloneNode();
-          //cellRol.textContent = value.role;
-          cellRol.textContent = "blaat";
+          cellRol.textContent = value.role;
+          //cellRol.textContent = "blaat";
           row.append(cellRol);
           // Bericht
           const cellMessage = aCell.cloneNode();

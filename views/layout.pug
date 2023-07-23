@@ -9,13 +9,13 @@ html
         #banner.flex-child
           h1.title #{title} 
         #login.flex-child
-          if isAuthenticated 
+          if isAuthorized
             p Hi #{name} 
             br 
             a(href='/auth/signout') log uit
           else
             a(href='/auth/signin') sign in
-      if  isAuthenticated
+      if  isAuthorized
         #navigate.pagepart
           ul 
             li.h_menu 

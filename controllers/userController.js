@@ -6,7 +6,7 @@ exports.id = asyncHandler(async (req, res, next) => {
     res.render('id', { 
         title: 'Educatie Team Manager (etm)',
         idTokenClaims: req.session.account.idTokenClaims,
-        isAuthenticated: req.session.isAuthenticated,
+        isAuthorized: req.session.isAuthorized,
         name: req.session.account?.name, 
     });
 });
@@ -18,7 +18,7 @@ exports.profile = asyncHandler(async (req, res, next) => {
         res.render('profile', { 
             title: 'Educatie Team Manager (etm)',
             profile: graphResponse,
-            isAuthenticated: req.session.isAuthenticated,
+            isAuthorized: req.session.isAuthorized,
             name: req.session.account?.name,
         });
     } catch (error) {
