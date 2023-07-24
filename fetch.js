@@ -10,8 +10,7 @@ var axios = require('axios');
  * @param endpoint: REST API endpoint to call
  * @param accessToken: raw access token string
  */
-async function fetch(endpoint, accessToken) {
-    console.log("Fetch");
+exports.get = async function (endpoint, accessToken) {
     const options = {
         headers: {
             Authorization: `Bearer ${accessToken}`
@@ -28,4 +27,23 @@ async function fetch(endpoint, accessToken) {
     }
 }
 
-module.exports = fetch;
+exports.post = async (endpoint, accessToken, body) => {
+    console.log(body);
+    axios.post(endpoint, body,
+        /*
+        {
+            "body": {
+                "content": "Dit is een test"
+            }
+        },
+        */
+        {
+            "headers": {
+                "Authorization": `Bearer ${accessToken}`,
+                "content-type": "application/json"        
+            }
+        }
+    )
+    .then((response) => console.log(response))
+    .catch((err) => console.log(err));
+}
