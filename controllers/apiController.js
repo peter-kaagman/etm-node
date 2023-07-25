@@ -47,46 +47,54 @@ exports.sendMessage = asyncHandler(async(req,res,next) =>{
     const guid = uuidv4();
     // data.id => team id
     // data.generalid => chennel id
-    //console.log(data);
+    console.log(data);
     const generalid = encodeURIComponent(data.generalid);
+    const id = 0;
     const url= `${process.env.GRAPH_API_ENDPOINT}/v1.0/teams/${data.id}/channels/${generalid}/messages`;
-        const card = {
-            "type": "AdaptiveCard",
-            "body": [
-                {
-                    "type": "TextBlock",
-                    "id": guid,
-                    "text": "Hello World",
-                    "wrap": true
+    const card = {
+        "title": "Bericht voor de gehele groep.",
+        "subtitle": "<at id=\"0\">General</at>&nbsp;Hello there!",
+        "text": data.message,
+    };
+    const message = {
+        "subject": null,
+        "body": {
+            "contentType": "html",
+            "content": "<attachment id=\""+guid+"\"></attachment>"
+        },
+        "attachments": [
+            {
+                "id": guid,
+                "contentType": "application/vnd.microsoft.card.thumbnail",
+                "contentUrl": null,
+                "content": JSON.stringify(card),
+                "name": null,
+                "thumbnailUrl": null
+            }
+        ],
+        
+        "mentions": [
+            {
+                "id": id,
+                "mentionText": 'General',
+                "mentioned": {
+                    "conversation": {
+                        "id": generalid,
+                        "displayName": 'General',
+                        "conversationIdentityType": 'channel'
+                    }
                 }
-            ],
-            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-            "version": "1.0",
-            "padding": "None"
-        };
-        const message = {
-            subject: null,
-            body: {
-                contentType: 'application/vnd.microsoft.card.thumbnail',
-                content: `<attachment id=\"${guid}\"></attachment>`
-            },
-            attachments: [
-                {
-                    id: '74d20c7f34aa4a7fb74e2b30004247c5',
-                    contentType: 'application/vnd.microsoft.card.thumbnail',
-                    contentUrl: null,
-                    content: card,
-                    name: null,
-                    thumbnailUrl: null
-                }
-            ]       
-        };
+            }
+        ] 
+            
+    };
     try{
         const reply = await fetch.post(url, req.session.accessToken, message);
+        res.json(reply);
     } catch (error){
         console.log("error sendmessage");
         console.log(error);
-        next(error);
+        res.json(error);
     }
 
   });

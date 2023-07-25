@@ -24,7 +24,7 @@ var app = express();
  * Using express-session middleware for persistent user session. Be sure to
  * familiarize yourself with available options. Visit: https://www.npmjs.com/package/express-session
  */
-var fileStoreOptions = {};
+//var fileStoreOptions = {};
 app.use(session({
     //store: new FileStore(fileStoreOptions),
     secret: process.env.EXPRESS_SESSION_SECRET,

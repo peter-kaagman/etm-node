@@ -32,15 +32,15 @@ document.addEventListener( 'DOMContentLoaded', function() {
            message: message
          })
         })
+        //.then(function(response){
+        //  return response.json();
+        //})
         .then(function(response){
-          return response.json();
-        })
-        .then(function(data){
-          console.log(data)
+          console.log(response)
         })
         .catch(function(err){
-              console.log('error');
-              console.warn('Some error: ', err);
+              console.log('post error');
+              console.warn(err);
         });
       });
         }else{

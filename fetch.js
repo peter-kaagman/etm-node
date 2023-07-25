@@ -28,15 +28,8 @@ exports.get = async function (endpoint, accessToken) {
 }
 
 exports.post = async (endpoint, accessToken, body) => {
-    console.log(body);
+    console.log(`request made to ${endpoint} at: ` + new Date().toString());
     axios.post(endpoint, body,
-        /*
-        {
-            "body": {
-                "content": "Dit is een test"
-            }
-        },
-        */
         {
             "headers": {
                 "Authorization": `Bearer ${accessToken}`,
@@ -44,6 +37,9 @@ exports.post = async (endpoint, accessToken, body) => {
             }
         }
     )
-    .then((response) => console.log(response))
+    .then((response) => {
+        console.log(response.status);
+        console.log(response.statusText)
+    })
     .catch((err) => console.log(err));
 }

@@ -19,7 +19,7 @@ router.get('/signin', authProvider.login({
 router.get('/acquireToken', authProvider.acquireToken({
     scopes: ['User.Read'],
     redirectUri: REDIRECT_URI,
-    successRedirect: '/'
+    successRedirect: '/teams'
 }));
 
 router.post('/redirect', authProvider.handleRedirect());
