@@ -72,7 +72,6 @@ exports.sendMessage = asyncHandler(async(req,res,next) =>{
                 "thumbnailUrl": null
             }
         ],
-        //TODO #1 @peter-kaagman AT mentions do not work in adaptive cards
         /*
         "mentions": [
             {
