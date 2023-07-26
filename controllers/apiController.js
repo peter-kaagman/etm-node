@@ -72,6 +72,7 @@ exports.sendMessage = asyncHandler(async(req,res,next) =>{
                 "thumbnailUrl": null
             }
         ],
+        //TODO At mention on adaptive card#2
         /*
         "mentions": [
             {
