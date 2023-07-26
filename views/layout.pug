@@ -15,10 +15,12 @@ html
             a(href='/auth/signout') log uit
           else
             a(href='/auth/signin') sign in
+            br
+            a(href='/auth/acquiretoken') token
       if  isAuthorized
         #navigate.pagepart
           ul 
-            li.h_menu 
+            li.h_menu
               a.navigatie(href='/') Home
             li.h_menu 
               a.navigate(href='/users/profile') Profiel

@@ -13,7 +13,7 @@ const router = express.Router();
 router.get('/signin', authProvider.login({
     scopes: [],
     redirectUri: REDIRECT_URI,
-    successRedirect: '/auth/acquireToken'
+    successRedirect: '/'
 }));
 
 router.get('/acquireToken', authProvider.acquireToken({

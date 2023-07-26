@@ -53,7 +53,7 @@ exports.sendMessage = asyncHandler(async(req,res,next) =>{
     const url= `${process.env.GRAPH_API_ENDPOINT}/v1.0/teams/${data.id}/channels/${generalid}/messages`;
     const card = {
         "title": "Bericht voor de gehele groep.",
-        "subtitle": "<at id=\"0\">General</at>&nbsp;Hello there!",
+        //"subtitle": "<at id=\"0\">General</at>&nbsp;Hello there!",
         "text": data.message,
     };
     const message = {
@@ -72,7 +72,8 @@ exports.sendMessage = asyncHandler(async(req,res,next) =>{
                 "thumbnailUrl": null
             }
         ],
-        
+        //TODO #1
+        /*
         "mentions": [
             {
                 "id": id,
@@ -86,7 +87,7 @@ exports.sendMessage = asyncHandler(async(req,res,next) =>{
                 }
             }
         ] 
-            
+        */  
     };
     try{
         const reply = await fetch.post(url, req.session.accessToken, message);

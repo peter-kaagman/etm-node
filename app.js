@@ -8,7 +8,7 @@ require('dotenv').config();
 var path = require('path');
 var express = require('express');
 var session = require('express-session');
-//var FileStore = require('session-file-store')(session);
+var FileStore = require('session-file-store')(session);
 var createError = require('http-errors');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -24,9 +24,9 @@ var app = express();
  * Using express-session middleware for persistent user session. Be sure to
  * familiarize yourself with available options. Visit: https://www.npmjs.com/package/express-session
  */
-//var fileStoreOptions = {};
+var fileStoreOptions = {};
 app.use(session({
-    //store: new FileStore(fileStoreOptions),
+    store: new FileStore(fileStoreOptions),
     secret: process.env.EXPRESS_SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
