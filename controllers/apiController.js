@@ -52,14 +52,15 @@ exports.sendMessage = asyncHandler(async(req,res,next) =>{
     const generalid = encodeURIComponent(data.generalid);
     const id = 0;
     const url= `${process.env.GRAPH_API_ENDPOINT}/v1.0/teams/${data.id}/channels/${generalid}/messages`;
-    /*
+    const contentBytes = encodeImage(__dirname +'/../public/images/exclamation.png');
+    
     const card = {
         "title": "Bericht voor de gehele groep.",
         //"subtitle": "<at id=\"0\">General</at>&nbsp;Hello there!",
-        "text": data.message,
+        "text": '<div><div>'+data.message+'\n<div><span><img src="../hostedContents/1/$value" style="vertical-align:bottom; width:297px; height:297px"></span>\n\n</div>\n\n\n</div>\n</div>',
     };
-    */
-    /*
+    
+    
     const message = {
         "subject": null,
         "body": {
@@ -76,25 +77,18 @@ exports.sendMessage = asyncHandler(async(req,res,next) =>{
                 "thumbnailUrl": null
             }
         ],
-    */
-        //BUG #2 AT Mention does not work on adaptive card
-     /*
-        "mentions": [
+        
+        "hostedContents": [
             {
-                "id": id,
-                "mentionText": 'General',
-                "mentioned": {
-                    "conversation": {
-                        "id": generalid,
-                        "displayName": 'General',
-                        "conversationIdentityType": 'channel'
-                    }
-                }
+                '@microsoft.graph.temporaryId': '1',
+                'contentBytes': contentBytes, 
+                'contentType': 'image/png'
             }
-        ] 
+        ]
+        
+        //BUG #2 AT Mention does not work on adaptive card
     };
-    */
-    const contentBytes = encodeImage(__dirname +'/../public/images/exclamation.png');
+    /*
     const message = {
         body: {
             contentType: 'html',
@@ -108,7 +102,9 @@ exports.sendMessage = asyncHandler(async(req,res,next) =>{
             }
         ]
     };
+    */
     console.log(message);
+    console.log(card);
     
      try{
         const reply = await fetch.post(url, req.session.accessToken, message);

@@ -7,8 +7,10 @@ require('dotenv').config();
 
 var path = require('path');
 var express = require('express');
+var sqlite = require('better-sqlite3');
 var session = require('express-session');
-var FileStore = require('session-file-store')(session);
+var sqliteStore = require('better-sqlite3-session-store')(session);
+//var FileStore = require('session-file-store')(session);
 var createError = require('http-errors');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -25,10 +27,18 @@ var app = express();
  * familiarize yourself with available options. Visit: https://www.npmjs.com/package/express-session
  */
 var fileStoreOptions = {
-    path: './sessions/'
+};
+const db = new sqlite('./sessions/session.db',{verbose: console.log});
+var sqliteStoreOptions = {
+    client: db,
+    expired: {
+        clear: true,
+        intervalMS: 900000
+    }
 };
 app.use(session({
-    store: new FileStore(fileStoreOptions),
+    //store: new FileStore(fileStoreOptions),
+    store: new sqliteStore(sqliteStoreOptions),
     secret: process.env.EXPRESS_SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
