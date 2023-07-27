@@ -77,6 +77,7 @@ class AuthProvider {
     }
 
     acquireToken(options = {}) {
+        console.log('acquiretoken');
         return async (req, res, next) => {
             try {
                 const msalInstance = this.getMsalInstance(this.msalConfig);
@@ -107,6 +108,7 @@ class AuthProvider {
 
                 res.redirect(options.successRedirect);
             } catch (error) {
+                console.log('gaat het hier fout');
                 if (error instanceof msal.InteractionRequiredAuthError) {
                     return this.login({
                         scopes: options.scopes || [],

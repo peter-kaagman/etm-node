@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 
 exports.index = asyncHandler(async(req, res, next) => {
+  console.log(req.session);
   res.render('index', {
     title: 'Educatie Team Manager (etm)',
     isAuthorized: req.session.isAuthorized,
